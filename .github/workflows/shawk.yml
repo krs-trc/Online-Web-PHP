@@ -16,5 +16,5 @@ jobs:
       - name: StackHawk Security Scan
         uses: stackhawk/action@v2
         with:
-          SHAWK_TOKEN: ${{ secrets.STACKHAWK_API_KEY }}
+          api-key: ${{ secrets.SHAWK_TOKEN }}
           target-url: http://localhost/online-shopping-webvsite-in-php-master 
