@@ -17,4 +17,8 @@ jobs:
         uses: stackhawk/action@v2
         with:
           api-key: ${{ secrets.SHAWK_TOKEN }}
-          target-url: http://localhost/online-shopping-webvsite-in-php-master 
+          config: |
+            app:
+              applicationId: 2674e0b6-bbe0-4cbc-8e30-e9dff743526e
+              env: Pre-Production
+              host: http://localhost/online-shopping-webvsite-in-php-master
