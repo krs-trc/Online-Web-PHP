@@ -1,0 +1,20 @@
+name: StackHawk Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: StackHawk Security Scan
+        uses: stackhawk/action@v2
+        with:
+          SHAWK_TOKEN: ${{ secrets.STACKHAWK_API_KEY }}
+          target-url: "http://localhost/online-shopping-webvsite-in-php-master"  
