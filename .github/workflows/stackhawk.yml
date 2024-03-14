@@ -17,4 +17,4 @@ jobs:
         uses: stackhawk/action@v2
         with:
           SHAWK_TOKEN: ${{ secrets.STACKHAWK_API_KEY }}
-          target-url: "http://localhost/online-shopping-webvsite-in-php-master"  
+          target-url: "http://localhost/online-shopping-webvsite-in-php-master/"  
