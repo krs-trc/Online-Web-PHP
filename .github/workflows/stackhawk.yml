@@ -2,7 +2,8 @@ name: StackHawk DAST Scan
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   stackhawk_scan:
@@ -11,13 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install StackHawk CLI
-        run: |
-          curl -sSL https://public.stackhawk.com/shget | bash -s -- -b /usr/local/bin latest
-
       - name: Run StackHawk DAST scan
         run: |
+          curl -sSL https://public.stackhawk.com/shget | bash -s -- -b /usr/local/bin latest
           hawk scan
         env:
           STACKHAWK_API_KEY: ${{ secrets.STACKHAWK_API_KEY }}
-
