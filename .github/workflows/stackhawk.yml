@@ -5,14 +5,19 @@ on:
     branches: [ main ]
 
 jobs:
-  stackhawk_dast_scan:
+  stackhawk_scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install StackHawk CLI
+        run: |
+          curl -sSL https://public.stackhawk.com/shget | bash -s -- -b /usr/local/bin latest
 
       - name: Run StackHawk DAST scan
         run: |
           hawk scan
         env:
           STACKHAWK_API_KEY: ${{ secrets.STACKHAWK_API_KEY }}
+
