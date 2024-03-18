@@ -1,0 +1,6 @@
+app:
+  applicationId: 995f90aa-5db0-48a9-818c-4739c156f038 # (required)
+  env: Pre-Production # (required)
+  host: https://online-shop-php.000webhostapp.com
+hawk:
+  failureThreshold: high
