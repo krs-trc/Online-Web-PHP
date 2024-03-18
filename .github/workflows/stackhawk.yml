@@ -16,8 +16,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Check StackHawk CLI version
+        run: hawk version
+
       - name: Run StackHawk DAST scan
         run: |
-          hawk scan --config stackhawk.yml
+          hawk scan --config stackhawk.yml > scan_output.txt
         env:
           STACKHAWK_API_KEY: ${{ secrets.STACKHAWK_API_KEY }}
+
+      - name: Display scan output
+        run: cat scan_output.txt
+
+
