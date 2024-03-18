@@ -1,0 +1,26 @@
+name: Arachni DAST
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  arachni_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '3.0'  # Specify the Ruby version you need
+
+    - name: Install Arachni
+      run: gem install arachni
+
+    - name: Run Arachni scan
+      run: |
+        arachni https://online-shop-php.000webhostapp.com/ --output-format json --report-save-path report.json
