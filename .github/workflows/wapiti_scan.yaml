@@ -16,10 +16,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: 3.10
 
       - name: Install Wapiti
-        run: pip install wapiti3
+        run: pip install wapiti
+
+      - name: Check Wapiti availability
+        run: wapiti --version
 
       - name: Run Wapiti Scan
         run: |
