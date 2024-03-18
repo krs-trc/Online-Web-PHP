@@ -49,14 +49,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Start your service
-        run: php -S localhost:8000
-              # ✏️ Update this to run your own service to be scanned
-
-      - name: Run HawkScan
-        uses: stackhawk/hawkscan-action@4c3258cd62248dac6d9fe91dd8d45928c697dee0
-        continue-on-error: true                   # ✏️ Set to false to break your build on scan errors
+      - name: Run StackHawk DAST scan
+        run: |
+          hawk scan --app-id 995f90aa-5db0-48a9-818c-4739c156f038 --api-key ${{ secrets.STACKHAWK_API_KEY }} --wait
+        env:
+          STACKHAWK_API_KEY: ${{ secrets.STACKHAWK_API_KEY }}
+          
+      - name: Upload scan report as artifact
+        uses: actions/upload-artifact@v2
         with:
-          apiKey: ${{ secrets.STACKHAWK_API_KEY }}
-          codeScanningAlerts: true
-          githubToken: ${{ github.token }}
+          name: scan-report
+          path: scan_report.txt
