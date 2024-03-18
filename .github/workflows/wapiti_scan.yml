@@ -1,0 +1,31 @@
+name: Wapiti Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  wapiti_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Wapiti
+        run: pip install wapiti
+
+      - name: Run Wapiti Scan
+        run: wapiti -u https://online-shop-php.000webhostapp.com/index.php
+
+      - name: Upload scan report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: wapiti-report.txt
+          path: wapiti-report.txt
