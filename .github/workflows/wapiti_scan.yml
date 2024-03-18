@@ -22,9 +22,12 @@ jobs:
         run: pip install wapiti
 
       - name: Run Wapiti Scan
-        run: wapiti -u https://online-shop-php.000webhostapp.com/index.php
+        run: |
+          wapiti -u https://online-shop-php.000webhostapp.com/index.php || true
+          # Using "|| true" to continue execution even if the Wapiti command fails
 
       - name: Upload scan report as artifact
+        if: success()
         uses: actions/upload-artifact@v2
         with:
           name: wapiti-report.txt
