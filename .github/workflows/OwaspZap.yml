@@ -32,7 +32,7 @@ jobs:
       # Step 4: Run ZAP Spider and Active Scan
       - name: Run ZAP Spider and Active Scan
         run: |
-          ./ZAP_2.10.0/zap.sh -cmd -quickurl https://your-php-website.com -quickprogress -quickout /zap/report.html -quickcmd cmd:quick-scan
+          ./ZAP_2.10.0/zap.sh -cmd -quickurl https://online-shop-php.000webhostapp.com/index.php -quickprogress -quickout /zap/report.html -quickcmd cmd:quick-scan
 
       # Step 5: Save ZAP report as workflow artifact
       - name: Save ZAP report
