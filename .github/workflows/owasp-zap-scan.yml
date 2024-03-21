@@ -1,6 +1,12 @@
 name: OWASP ZAP Scan
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   zap_scan:
